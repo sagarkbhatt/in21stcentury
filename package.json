@@ -1,0 +1,37 @@
+{
+  "name": "in21stcentury",
+  "version": "0.0.1",
+  "description": "Load Blazing Fast Content",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagarkbhatt/in21stcentury.git"
+  },
+  "author": "sagarkbhatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagarkbhatt/in21stcentury/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "autoprefixer": "^9.3.1",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "mini-css-extract-plugin": "^0.4.5",
+    "node-sass": "^4.10.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  }
+}
