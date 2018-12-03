@@ -4,9 +4,9 @@
   "description": "Load Blazing Fast Content",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "start": "cd config && webpack-dev-server --open --mode development",
+    "dev": "cd config && webpack --mode development",
+    "build": "rm -rf build/* && cd config && webpack --mode production"
   },
   "repository": {
     "type": "git",

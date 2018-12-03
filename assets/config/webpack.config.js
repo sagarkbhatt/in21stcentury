@@ -1,8 +1,20 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const postCssConfig = require( './postcss.config' );
+const babelConfig = require( './babelrc.config' );
 
 let config = {
+    resolve: {
+        descriptionFiles: [ './../package.json' ]
+    },
+    entry: {
+        index: './../entries/index.js',
+    },
+    output: {
+        filename: './../build/[name].js',
+        path: __dirname
+    },
     optimization: {
         minimizer: [
             new UglifyJsPlugin({
@@ -19,8 +31,9 @@ let config = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
-                }
+					loader: "babel-loader",
+					options: babelConfig,
+				}
             },
             {
                 test: /\.(sa|sc|c)ss$/,
@@ -30,25 +43,28 @@ let config = {
                     this.mode ? 'style-loader' : MiniCssExtractPlugin.loader,
                     "css-loader",
                     "sass-loader",
-                    "postcss-loader"
+                    {
+                        loader: 'postcss-loader',
+                        options: postCssConfig,
+                    }
                 ]
             },
         ]
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "[name].css",
+            filename: "./../build/[name].css",
             chunkFilename: "[id].css"
         }),
     ]
 };
 
 module.exports = (env, argv) => {
-    
+
     if ( argv.mode === 'development' ) {
         config.devtool = 'source-map';
     }
-    
+
     config.mode = argv.mode;
     return config;
 };
